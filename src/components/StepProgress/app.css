@@ -1,0 +1,35 @@
+.checkout {
+  margin: 1.8rem 0;
+}
+.checkout-title {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1.6rem 0;
+}
+
+.num {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  color: white;
+  text-align: center;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: row;
+  width: 60px;
+  height: 1px;
+  margin: 0px 10px;
+  border: solid 2px whitesmoke;
+}

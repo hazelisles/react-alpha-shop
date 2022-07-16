@@ -1,0 +1,39 @@
+.button-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prev {
+  background-color: white;
+  color: black;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 9px 17px;
+}
+
+.prev:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.prev:disabled {
+  cursor: no-drop;
+}
+
+.next {
+  background-color: rgb(254, 90, 118);
+  color: white;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 9px 17px;
+}
+
+.next:hover {
+  background-color: rgb(255, 106, 131);
+}
+
+.next:disabled {
+  display: none;
+}
