@@ -1,7 +1,12 @@
-.button-group{
+.buttonGroup{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 22px;
+}
+
+.buttonGroup.firstStep {
+  justify-content: flex-end;
 }
 
 .prev {
@@ -18,7 +23,7 @@
 }
 
 .prev:disabled {
-  cursor: no-drop;
+  display: none;
 }
 
 .next {
