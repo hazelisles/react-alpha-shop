@@ -1,13 +1,14 @@
 .checkout {
   margin: 1.8rem 0;
 }
-.checkout-title {
+
+.checkoutTitle {
   font-size: 30px;
   font-weight: 600;
   line-height: 38px;
 }
 
-.progress-container {
+.progressContainer {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -15,7 +16,6 @@
   margin: 1.6rem 0;
   max-width: 640px;
 }
-
 
 .step {
   flex: 1;
@@ -25,15 +25,14 @@
   font-weight: 600;
 }
 
-.progress-bar {
+.progressBar {
   flex: 1;
   height: 3px;
   margin: 0 10px;
   background-color: rgba(0, 0, 0, 0.25);
-}
-
-.progress-bar.active {
-  background-color: black;
+  &:global(.active) {
+    background-color: black;
+  }
 }
 
 .number {
@@ -46,15 +45,13 @@
   height: 30px;
   width: 30px;
   margin: 0 5px;
-}
-
-.number.active {
-  color: white;
-  border: 0;
-  background-color: black;
-}
-
-.number.active.done {
-  color: transparent;
-  text-shadow: 0 0 0 white;
+  &:global(.active) {
+    color: white;
+    border: 0;
+    background-color: black;
+  }
+  &:global(.done) {
+    color: transparent;
+    text-shadow: 0 0 0 white;
+  }
 }

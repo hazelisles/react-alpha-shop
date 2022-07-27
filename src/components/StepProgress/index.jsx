@@ -1,40 +1,61 @@
-import React from 'react';
-import './app.css';
+import { FC, useEffect, useState } from 'react';
 import cx from 'classnames';
+import style from './App.module.scss';
+import StepConstants from '../../constants/StepConstants';
 
 type StepProgressProps = {
   step: Number,
 };
 
-const StepProgress: React.FC<StepProgressProps> = (props) => {
+const StepProgress: FC<StepProgressProps> = (props) => {
   const { step } = props;
   const doneEmoji = '✔️';
+  const [isStep1, setStep1] = useState(true);
+  const [isStep3, setStep3] = useState(false);
+  useEffect(() => {
+    switch (step) {
+      case StepConstants.STEP_ONE:
+        setStep1(true);
+        setStep3(false);
+        break;
+      case StepConstants.STEP_TWO:
+        setStep1(false);
+        setStep3(false);
+        break;
+      case StepConstants.STEP_THREE:
+        setStep1(false);
+        setStep3(true);
+        break;
+      default:
+        break;
+    }
+  }, [step]);
   return (
-    <section className="checkout">
-      <h2 className="checkout-title">結帳</h2>
-      <div className="progress-container">
-        <div className="step">
-          <div className={cx('number', ' active', { done: step !== 1 })}>
-            {step !== 1 ? doneEmoji : 1}
+    <section className={style.checkout}>
+      <h2 className={style.checkoutTitle}>結帳</h2>
+      <div className={style.progressContainer}>
+        <div className={style.step}>
+          <div className={cx(style.number, 'active', { done: !isStep1 })}>
+            {!isStep1 ? doneEmoji : StepConstants.STEP_ONE}
           </div>
           <span>寄送地址</span>
-          <div className="progress-bar active" />
+          <div className={cx(style.progressBar, 'active')} />
         </div>
-        <div className="step">
+        <div className={style.step}>
           <div
             className={cx(
-              'number',
-              { active: step !== 1 },
-              { done: step === 3 },
+              style.number,
+              { active: !isStep1 },
+              { done: isStep3 },
             )}
           >
-            {step === 3 ? doneEmoji : 2}
+            {isStep3 ? doneEmoji : StepConstants.STEP_TWO}
           </div>
           <span>運送方式</span>
-          <div className={cx('progress-bar', { active: step !== 1 })} />
+          <div className={cx(style.progressBar, { active: !isStep1 })} />
         </div>
-        <div className="step">
-          <div className={cx('number', { active: step === 3 })}>3</div>
+        <div className={style.step}>
+          <div className={cx(style.number, { active: isStep3 })}>3</div>
           <span>付款資訊</span>
         </div>
       </div>

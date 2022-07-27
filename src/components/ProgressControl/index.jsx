@@ -1,33 +1,47 @@
 import React from 'react';
-import './app.css';
-import cx from 'classnames';
+import style from './App.module.scss';
+import StepConstants from '../../constants/StepConstants';
 
 type ProgressControlProps = {
   step: number,
-  setStep: Function,
+  setStep: React.SetStateAction<Number>,
 };
 
 const ProgressControl: React.FC<ProgressControlProps> = (props) => {
   const { step, setStep } = props;
 
   const atNext = () => {
-    if (step === 3) return;
+    if (step === StepConstants.STEP_THREE) return;
     setStep(step + 1);
   };
   const atPrev = () => {
-    if (step === 1) return;
+    if (step === StepConstants.STEP_ONE) return;
     setStep(step - 1);
   };
 
   return (
-    <section className={cx('buttonGroup', { firstStep: step === 1 })}>
-      <button className="prev" disabled={step === 1} onClick={atPrev}>
+    <section
+      className={style.buttonGroup}
+      data-step1={step === StepConstants.STEP_ONE}
+    >
+      <button
+        className={style.prev}
+        disabled={step === StepConstants.STEP_ONE}
+        onClick={atPrev}
+      >
         上一步
       </button>
-      <button className="next" disabled={step === 3} onClick={atNext}>
+      <button
+        className={style.next}
+        disabled={step === StepConstants.STEP_THREE}
+        onClick={atNext}
+      >
         下一步
       </button>
-      <button className="next" disabled={step !== 3}>
+      <button
+        className={style.next}
+        disabled={step !== StepConstants.STEP_THREE}
+      >
         確認下單
       </button>
     </section>

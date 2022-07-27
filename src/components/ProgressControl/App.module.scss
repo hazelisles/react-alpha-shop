@@ -3,10 +3,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: 22px;
-}
-
-.buttonGroup.firstStep {
-  justify-content: flex-end;
+  &[data-step1="true"] {
+    justify-content: flex-end;
+  }
 }
 
 .prev {
@@ -16,14 +15,12 @@
   outline: none;
   border-radius: 5px;
   padding: 9px 17px;
-}
-
-.prev:hover {
-  background-color: rgb(228, 228, 228);
-}
-
-.prev:disabled {
-  display: none;
+  &:hover {
+    background-color: rgb(228, 228, 228);
+  }
+  &:disabled {
+    display: none;
+  }
 }
 
 .next {
@@ -33,12 +30,10 @@
   outline: none;
   border-radius: 5px;
   padding: 9px 17px;
-}
-
-.next:hover {
-  background-color: rgb(255, 106, 131);
-}
-
-.next:disabled {
-  display: none;
+  &:hover {
+    background-color: rgb(255, 106, 131);
+  }
+  &:disabled {
+    display: none;
+  }
 }
