@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState } from 'react';
 import Header from './Header';
 import StepProgress from './StepProgress';
 import Step1 from './Step1';
@@ -10,14 +10,6 @@ import Footer from './Footer';
 import StepConstants from '../constants/StepConstants';
 
 const App = () => {
-  const HeaderMemo = memo(Header);
-  const StepProgressMemo = memo(StepProgress);
-  const Step1Memo = memo(Step1);
-  const Step2Memo = memo(Step2);
-  const Step3Memo = memo(Step3);
-  const CartMemo = memo(Cart);
-  const ProgressControlMemo = memo(ProgressControl);
-  const FooterMemo = memo(Footer);
   const [step, setStep] = useState(StepConstants.STEP_ONE);
 
   const [cartLineItems, setCartLineItems] = useState(() => {
@@ -56,14 +48,14 @@ const App = () => {
   let currentStep;
 
   switch (step) {
-    case StepConstants.STEP_ONE:
-      currentStep = <Step1Memo />;
+    case StepConstants.STEP_ADDRESS:
+      currentStep = <Step1 />;
       break;
-    case StepConstants.STEP_TWO:
-      currentStep = <Step2Memo />;
+    case StepConstants.STEP_DELIVERY:
+      currentStep = <Step2 />;
       break;
-    case StepConstants.STEP_THREE:
-      currentStep = <Step3Memo />;
+    case StepConstants.STEP_PAYMENT:
+      currentStep = <Step3 />;
       break;
     default:
       break;
@@ -71,24 +63,24 @@ const App = () => {
 
   return (
     <>
-      <HeaderMemo />
+      <Header />
       <div className="container">
-        <StepProgressMemo step={step} />
+        <StepProgress step={step} />
         <section className="row g-2">
           <div id="progress-section" className="col-md-7 col-12 pe-4">
             <form action="">{currentStep}</form>
             <hr />
-            <ProgressControlMemo step={step} setStep={setStep} />
+            <ProgressControl step={step} setStep={setStep} />
           </div>
           <div id="cart-section" className="col-md-5 col-12">
-            <CartMemo
+            <Cart
               cartLineItems={cartLineItems}
               setCartLineItems={setCartLineItems}
             />
           </div>
         </section>
       </div>
-      <FooterMemo />
+      <Footer />
     </>
   );
 };

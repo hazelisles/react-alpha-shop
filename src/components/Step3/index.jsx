@@ -1,4 +1,6 @@
-const Step3 = () => {
+import { memo } from 'react';
+
+const Step3 = memo(() => {
   return (
     <>
       <h3 className="form-title">付款資訊</h3>
@@ -36,6 +38,6 @@ const Step3 = () => {
       </section>
     </>
   );
-};
+});
 
 export default Step3;

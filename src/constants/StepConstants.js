@@ -1,7 +1,7 @@
 const StepConstants = Object.freeze({
-  STEP_ONE: 1,
-  STEP_TWO: 2,
-  STEP_THREE: 3,
+  STEP_ADDRESS: 1,
+  STEP_DELIVERY: 2,
+  STEP_PAYMENT: 3,
 });
 
 export default StepConstants;

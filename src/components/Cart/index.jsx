@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, memo } from 'react';
 import LineItem from './LineItem';
-import './app.css';
+import './style.css';
 
 type CartProps = {
   cartLineItems: Array,
@@ -14,7 +14,7 @@ const sumCartItem = (cart) => {
     }, 0);
 };
 
-const Cart: FC<CartProps> = (props) => {
+const Cart: FC<CartProps> = memo((props) => {
   const { cartLineItems } = props;
   const [total, setTotal] = useState(sumCartItem(cartLineItems));
   useEffect(() => {
@@ -51,5 +51,5 @@ const Cart: FC<CartProps> = (props) => {
       </section>
     </>
   );
-};
+});
 export default Cart;

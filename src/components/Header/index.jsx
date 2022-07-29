@@ -1,6 +1,7 @@
-import './app.css';
+import { memo } from 'react';
+import './style.css';
 
-const Header = () => {
+const Header = memo(() => {
   return (
     <header id="header">
       <div className="header-container">
@@ -29,6 +30,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

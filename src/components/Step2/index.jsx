@@ -1,6 +1,7 @@
-import './app.css';
+import { memo } from 'react';
+import './style.css';
 
-const Step2 = () => {
+const Step2 = memo(() => {
   return (
     <>
       <h3 className="form-title">運送方式</h3>
@@ -30,6 +31,6 @@ const Step2 = () => {
       </section>
     </>
   );
-};
+});
 
 export default Step2;
