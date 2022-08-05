@@ -1,5 +1,6 @@
 import { FC, useEffect, useState, memo } from 'react';
 import cx from 'classnames';
+import { useCartContext } from '../Contexts/CartContext';
 import style from './StepProgress.module.scss';
 import StepConstants from '../../constants/StepConstants';
 
@@ -7,8 +8,8 @@ type StepProgressProps = {
   step: Number,
 };
 
-const StepProgress: FC<StepProgressProps> = memo((props) => {
-  const { step } = props;
+const StepProgress: FC<StepProgressProps> = memo(() => {
+  const { step } = useCartContext();
   const doneEmoji = '✔️';
   const [isStep1, setStep1] = useState(true);
   const [isStep3, setStep3] = useState(false);

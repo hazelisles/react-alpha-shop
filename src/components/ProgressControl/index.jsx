@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+import { useCartContext } from '../Contexts/CartContext';
 import style from './ProgressControl.module.scss';
 
 type ProgressControlProps = {
@@ -6,8 +7,8 @@ type ProgressControlProps = {
   setStep: React.SetStateAction<Number>,
 };
 
-const ProgressControl: FC<ProgressControlProps> = memo((props) => {
-  const { step, setStep } = props;
+const ProgressControl: FC<ProgressControlProps> = memo(() => {
+  const { step, setStep } = useCartContext();
 
   const atNext = () => {
     if (step === 3) return;

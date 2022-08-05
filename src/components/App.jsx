@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Header from './Header';
 import StepProgress from './StepProgress';
 import Step1 from './Step1';
@@ -8,9 +8,10 @@ import Cart from './Cart';
 import ProgressControl from './ProgressControl';
 import Footer from './Footer';
 import StepConstants from '../constants/StepConstants';
+import { CartContext } from './Contexts/CartContext';
 
 const App = () => {
-  const [step, setStep] = useState(StepConstants.STEP_ONE);
+  const [step, setStep] = useState(StepConstants.STEP_ADDRESS);
 
   const [cartLineItems, setCartLineItems] = useState(() => {
     return [
@@ -45,6 +46,10 @@ const App = () => {
     ];
   });
 
+  const cartContextProviderValue = useMemo(() => {
+    return { step, setStep, cartLineItems, setCartLineItems };
+  }, [step, setStep, cartLineItems, setCartLineItems]);
+
   let currentStep;
 
   switch (step) {
@@ -65,20 +70,19 @@ const App = () => {
     <>
       <Header />
       <div className="container">
-        <StepProgress step={step} />
-        <section className="row g-2">
-          <div id="progress-section" className="col-md-7 col-12 pe-4">
-            <form action="">{currentStep}</form>
-            <hr />
-            <ProgressControl step={step} setStep={setStep} />
-          </div>
-          <div id="cart-section" className="col-md-5 col-12">
-            <Cart
-              cartLineItems={cartLineItems}
-              setCartLineItems={setCartLineItems}
-            />
-          </div>
-        </section>
+        <CartContext.Provider value={cartContextProviderValue}>
+          <StepProgress />
+          <section className="row g-2">
+            <div id="progress-section" className="col-md-7 col-12 pe-4">
+              <form action="">{currentStep}</form>
+              <hr />
+              <ProgressControl />
+            </div>
+            <div id="cart-section" className="col-md-5 col-12">
+              <Cart />
+            </div>
+          </section>
+        </CartContext.Provider>
       </div>
       <Footer />
     </>

@@ -1,5 +1,5 @@
 const LineItem = (props) => {
-  const { id, name, price, image, quantity } = props;
+  const { id, name, price, image, quantity, onUpdateQuantity } = props;
   return (
     <div className="product-container col-12">
       <img className="img-container" src={image} alt={id} />
@@ -9,9 +9,14 @@ const LineItem = (props) => {
           <div className="price">${price}</div>
         </div>
         <div className="product-control">
-          <i className="fa-solid fa-circle-minus" />
+          <button onClick={(e) => onUpdateQuantity(e, id)}>
+            <i className="fa-solid fa-circle-minus" />
+          </button>
+
           <span className="product-quantity">{quantity}</span>
-          <i className="fa-solid fa-circle-plus" />
+          <button onClick={(e) => onUpdateQuantity(e, id)}>
+            <i className="fa-solid fa-circle-plus" />
+          </button>
         </div>
       </div>
     </div>

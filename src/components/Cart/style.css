@@ -6,6 +6,12 @@
   margin: 13px auto;
 }
 
+.product-list button {
+  padding: 0;
+  border: 0;
+  background-color: white;
+}
+
 .product-container {
   display: flex;
   flex-direction: row;
